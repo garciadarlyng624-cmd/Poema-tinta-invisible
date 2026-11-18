@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poema con Tinta Invisible</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0b0b0e;
+            font-family: 'Playfair Display', serif;
+            overflow: hidden;
+            touch-action: none;
+            user-select: none;
+        }
+
+        /* Estilo de la carta pergamino */
+        .parchment {
+            background: linear-gradient(135deg, #fbf7ee 0%, #f3ebd7 50%, #eae0c5 100%);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), inset 0 0 50px rgba(160, 130, 90, 0.25);
+            border: 1px solid #dcd0b2;
+        }
+
+        /* Tipografía cursiva elegante */
+        .poem-font {
+            font-family: 'Dancing Script', cursive;
+        }
+
+        /* Tinta invisible inicial */
+        .invisible-text {
+            opacity: 0.07;
+            filter: blur(1.8px);
+            transition: opacity 0.6s ease, filter 0.6s ease, color 0.6s ease;
+        }
+
+        /* Tinta revelada por calor */
+        .revealed-text {
+            opacity: 1 !important;
+            filter: blur(0px) !important;
+            color: #382416 !important;
+            text-shadow: 0 0 1px rgba(56, 36, 22, 0.35);
+        }
+
+        /* Luz de la vela que sigue al usuario */
+        #heat-aura {
+            background: radial-gradient(circle, rgba(255,180,60,0.5) 0%, rgba(255,120,0,0.2) 50%, transparent 75%);
+            pointer-events: none;
+            transition: transform 0.04s ease-out;
+        }
+
+        /* Animación parpadeante de la llama */
+        @keyframes flicker {
+            0% { transform: scale(1) rotate(-1deg); opacity: 0.95; }
+            50% { transform: scale(1.08) rotate(1.5deg); opacity: 1; }
+            100% { transform: scale(0.96) rotate(-1.5deg); opacity: 0.9; }
+        }
+
+        .flame {
+            animation: flicker 0.45s infinite alternate ease-in-out;
+            transform-origin: bottom center;
+        }
+
+        /* Scrollbar personalizada para el pergamino si es necesario */
+        .custom-scroll::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #d4c5a9;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="h-screen w-screen flex flex-col items-center justify-center relative">
+
+    <!-- Instrucción superior estilo TikTok -->
+    <div id="instruction" class="absolute top-4 text-stone-400 text-xs sm:text-sm tracking-wider uppercase opacity-80 z-20 transition-opacity duration-500 font-sans text-center px-4">
+        ✨ Desliza o arrastra la vela encendida para revelar el secreto ✨
+    </div>
+
+    <!-- Contenedor superior con limón y recipiente de tinta (decorativo estilo video) -->
+    <div class="absolute top-10 sm:top-6 flex items-center justify-center space-x-8 opacity-75 z-10 pointer-events-none scale-75 sm:scale-90">
+        <!-- Rodaja de limón -->
+        <div class="flex flex-col items-center">
+            <div class="w-12 h-6 bg-yellow-300 rounded-t-full border-2 border-yellow-500 shadow-md relative overflow-hidden flex justify-center items-end">
+                <div class="w-10 h-4 bg-yellow-100 rounded-t-full border border-yellow-400"></div>
+            </div>
+        </div>
+        <!-- Recipiente de tinta invisible -->
+        <div class="flex flex-col items-center">
+            <div class="w-10 h-7 bg-amber-100 rounded-md border border-amber-300 shadow-inner flex items-center justify-center">
+                <div class="w-6 h-4 bg-amber-50 rounded-sm opacity-60"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Carta Pergamino Principal -->
+    <div id="parchment" class="relative w-[90vw] max-w-[420px] h-[75vh] max-h-[640px] parchment rounded-xl p-6 sm:p-8 flex flex-col items-center overflow-y-auto custom-scroll cursor-pointer z-10">
+        
+        <!-- Adornos decorativos en las esquinas -->
+        <div class="absolute top-3 left-3 text-amber-900 opacity-25 text-lg">❦</div>
+        <div class="absolute top-3 right-3 text-amber-900 opacity-25 text-lg">❦</div>
+        <div class="absolute bottom-3 left-3 text-amber-900 opacity-25 text-lg">❦</div>
+        <div class="absolute bottom-3 right-3 text-amber-900 opacity-25 text-lg">❦</div>
+
+        <!-- Contenido del Poema Largo -->
+        <div class="poem-font text-lg sm:text-xl text-stone-900 text-center my-auto space-y-4 py-6 w-full">
+            <p class="invisible-text line-reveal">No todo lo que siento<br>se ve a simple vista,<br>ni todo lo que llevo dentro<br>siempre encuentro cómo expresarlo.</p>
+            
+            <p class="invisible-text line-reveal">A veces hacen falta<br>pequeños momentos,<br>palabras inesperadas<br>y un poquito de tiempo<br>para descubrir todo<br>lo que mi corazón guarda por ti.</p>
+            
+            <p class="invisible-text line-reveal">Porque hay sentimientos<br>que no necesitan hacer ruido<br>para ser inmensos,<br>y hay amores que se demuestran<br>incluso en los pequeños detalles.</p>
+            
+            <p class="invisible-text line-reveal">Quizás no siempre encuentres<br>las palabras que necesitas escuchar,<br>quizás algunos días<br>no sepa cómo demostrarte<br>todo lo que significas para mí.</p>
+            
+            <p class="invisible-text line-reveal">Pero quiero que sepas<br>que incluso en mis silencios,<br>en mis pensamientos<br>y en cada pequeño detalle,<br>hay una parte de mí<br>que siempre está pensando en ti.</p>
+            
+            <p class="invisible-text line-reveal">Si alguna vez dudas de mi cariño,<br>quiero que recuerdes<br>que no tienes que hacer nada extraordinario<br>para merecerlo.</p>
+            
+            <p class="invisible-text line-reveal">Te quiero en tus días felices,<br>pero también en los difíciles.<br>Te quiero cuando sonríes,<br>cuando estás cansado,<br>cuando tienes mil cosas en la cabeza<br>y cuando simplemente necesitas<br>que alguien esté a tu lado.</p>
+            
+            <p class="invisible-text line-reveal">Y si alguna vez necesitas<br>una razón para sentirte especial,<br>lee estas palabras otra vez<br>y recuerda que alguien<br>eligió escribirlas pensando en ti.</p>
+            
+            <p class="invisible-text line-reveal">Porque aunque no siempre se vea,<br>aunque a veces no encuentre<br>la manera perfecta de decirlo,<br>hay algo que quiero que tengas<br>siempre muy presente:</p>
+            
+            <p class="invisible-text line-reveal font-bold text-xl sm:text-2xl text-amber-950">Te quiero muchísimo,<br>más de lo que a veces consigo demostrar,<br>más de lo que estas palabras pueden explicar<br>y de una manera que espero<br>que nunca tengas que poner en duda.</p>
+            
+            <p class="invisible-text line-reveal pt-2">Todo esto,<br>aunque no siempre se note,<br>siempre ha estado escrito<br>para ti. ❤️</p>
+        </div>
+    </div>
+
+    <!-- Vela Interactiva Inferior -->
+    <div id="candle" class="absolute bottom-4 flex flex-col items-center cursor-pointer z-30 group">
+        <div class="flame w-6 h-10 bg-gradient-to-t from-orange-600 via-amber-300 to-yellow-100 rounded-full shadow-[0_0_25px_#ff9800]"></div>
+        <div class="w-1 h-2 bg-stone-900"></div>
+        <div class="w-10 h-16 bg-gradient-to-r from-amber-100 via-amber-50 to-amber-200 rounded-t-sm shadow-lg border border-amber-300"></div>
+    </div>
+
+    <!-- Aura de calor que acompaña al cursor / toque -->
+    <div id="heat-aura" class="absolute w-56 h-56 rounded-full transform -translate-x-1/2 -translate-y-1/2 z-20 opacity-0"></div>
+
+    <script>
+        const parchment = document.getElementById('parchment');
+        const heatAura = document.getElementById('heat-aura');
+        const hiddenLines = document.querySelectorAll('.line-reveal');
+        const instruction = document.getElementById('instruction');
+        const candle = document.getElementById('candle');
+
+        let isDragging = false;
+
+        function updateHeat(clientX, clientY) {
+            heatAura.style.left = clientX + 'px';
+            heatAura.style.top = clientY + 'px';
+            heatAura.style.opacity = '1';
+
+            // Comprobar distancia a cada línea del poema
+            hiddenLines.forEach(line => {
+                const rect = line.getBoundingClientRect();
+                const lineX = rect.left + rect.width / 2;
+                const lineY = rect.top + rect.height / 2;
+
+                const distance = Math.hypot(clientX - lineX, clientY - lineY);
+
+                if (distance < 140) {
+                    line.classList.add('revealed-text');
+                }
+            });
+        }
+
+        // Eventos de Mouse
+        window.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                updateHeat(e.clientX, e.clientY);
+            }
+        });
+
+        candle.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            instruction.style.opacity = '0';
+            updateHeat(e.clientX, e.clientY);
+        });
+
+        window.addEventListener('mouseup', () => {
+            isDragging = false;
+            heatAura.style.opacity = '0';
+        });
+
+        // Eventos Táctiles (Móviles / Tablets)
+        window.addEventListener('touchmove', (e) => {
+            if (e.touches.length > 0) {
+                const touch = e.touches[0];
+                updateHeat(touch.clientX, touch.clientY);
+                instruction.style.opacity = '0';
+            }
+        }, { passive: true });
+
+        candle.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            instruction.style.opacity = '0';
+            if (e.touches.length > 0) {
+                updateHeat(e.touches[0].clientX, e.touches[0].clientY);
+            }
+        });
+
+        window.addEventListener('touchend', () => {
+            isDragging = false;
+            heatAura.style.opacity = '0';
+        });
+
+        // Permitir revelar al tocar directamente el pergamino también
+        parchment.addEventListener('click', (e) => {
+            updateHeat(e.clientX, e.clientY);
+            instruction.style.opacity = '0';
+            // Revelar todo de forma gradual si hacen click en el papel
+            hiddenLines.forEach(line => line.classList.add('revealed-text'));
+        });
+    </script>
+</body>
+</html>
